@@ -1,0 +1,162 @@
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html>
+
+
+
+<!-- Head -->
+<head>
+<title>Wuhan Weather</title>
+
+<!-- For-Mobile-Apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="New York Weather Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //For-Mobile-Apps -->
+
+<!-- Style --> <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+
+<!-- Web-Fonts -->
+<link href='//fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Raleway:100,200' rel='stylesheet' type='text/css'>
+<!-- //Web-Fonts -->
+
+</head>
+<!-- Head -->
+
+
+
+<!-- Body -->
+<body onload="startTime()">
+<!-- Heading -->
+<h1>GET AUTO WEATHER WIDGET</h1>
+<!-- //Headng -->
+<!-- Container -->
+<div class="container">
+  <!-- City -->
+  <div class="city">
+    <div class="title">
+      <h2>City</h2>
+<select id="city" onchange="change();"></select>
+<script>
+var citys=['北京','上海', '重庆',  '深圳', '广州', '杭州',
+    '南京', '苏州', '天津', '成都', '南昌', '三亚','青岛',
+    '厦门', '西安','长沙','合肥','西藏', '内蒙古', '安庆', '阿泰勒', '安康',
+    '阿克苏', '包头', '北海', '百色','保山', '长治', '长春', '常州', '昌都',
+    '朝阳', '常德', '长白山', '赤峰', '大同', '大连', '达县', '东营', '大庆', '丹东',
+    '大理', '敦煌', '鄂尔多斯', '恩施', '福州', '阜阳', '贵阳',
+    '桂林', '广元', '格尔木', '呼和浩特', '哈密',
+    '黑河', '海拉尔', '哈尔滨', '海口', '黄山', '邯郸',
+    '汉中', '和田', '晋江', '锦州', '景德镇',
+    '嘉峪关', '井冈山', '济宁', '九江', '佳木斯', '济南',
+    '喀什', '昆明', '康定', '克拉玛依', '库尔勒', '库车', '兰州',
+    '洛阳', '丽江', '林芝', '柳州', '泸州', '连云港', '黎平',
+    '连成', '拉萨', '临沧', '临沂', '芒市', '牡丹江', '满洲里', '绵阳',
+    '梅县', '漠河', '南充', '南宁', '南阳', '南通', '那拉提',
+    '宁波', '攀枝花', '衢州', '秦皇岛', '庆阳', '齐齐哈尔',
+    '石家庄',  '沈阳', '思茅', '铜仁', '塔城', '腾冲', '台州',
+    '通辽', '太原', '威海', '梧州', '文山', '无锡', '潍坊', '武夷山', '乌兰浩特',
+    '温州', '乌鲁木齐', '万州', '乌海', '兴义', '西昌',  '襄樊',
+    '西宁', '锡林浩特', '西双版纳', '徐州', '义乌', '永州', '榆林', '延安', '运城',
+    '烟台', '银川', '宜昌', '宜宾', '盐城', '延吉', '玉树', '伊宁', '珠海', '昭通',
+    '张家界', '舟山', '郑州', '中卫', '芷江', '湛江'];; 
+select2=document.getElementById("city"); //获取第一个下拉列表对象
+var ops=""; 
+    for(var i=0;i<citys.length;i++){
+        ops=ops+"<option>"+citys[i]+"</option>"
+    }
+    select2.innerHTML=ops;
+</script>
+      <h3>&nbsp;</h3>
+    </div>
+    <div class="date-time">
+      <div class="dmy">
+        <div id="txt"></div>
+        <div class="date">
+          <!-- Date-JavaScript -->
+          <script type="text/javascript">
+							var mydate=new Date()
+							var year=mydate.getYear()
+							if(year<1000)
+							year+=1900
+							var day=mydate.getDay()
+							var month=mydate.getMonth()
+							var daym=mydate.getDate()
+							if(daym<10)
+							daym="0"+daym
+							var dayarray=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+							var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+							document.write(""+dayarray[day]+", "+montharray[month]+" "+daym+", "+year+"")
+							</script>
+          <!-- //Date-JavaScript -->
+        </div>
+      </div>
+      <div class="temperature">
+        <p>20°<span>C</span></p>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <!-- //City -->
+  <!-- Forecast -->
+  <div class="forecast">
+    <div class="forecast-icon"> <img src="images/forecast.png" alt="New York Weather Widget"> </div>
+    <div class="today-weather">
+      <h3>Cloudy</h3>
+      <ul>
+        <li>Now <span> 20°C</span></li>
+        <li> Tomorrow <span> 22°C</span></li>
+        <li>Day After Tomorrow <span> 24°C</span></li>
+        <li>Yesterday <span> 23°C</span></li>
+        <li>Day Before Yesterday <span> 20°C</span></li>
+      </ul>
+    </div>
+  </div>
+  <!-- //Forecast -->
+  <div class="clear"></div>
+</div>
+<!-- //Container -->
+<!-- Footer -->
+<div class="footer">
+  <!-- Copyright -->
+  <div class="copyright">
+    <p>&nbsp;</p>
+  </div>
+  <!-- //Copyright -->
+</div>
+<!-- //Footer -->
+<!-- Custom-JavaScript-Files -->
+<!-- Time-JavaScript -->
+<script>
+			function startTime() {
+				var today = new Date();
+				var h = today.getHours();
+				var m = today.getMinutes();
+				var s = today.getSeconds();
+				m = checkTime(m);
+				s = checkTime(s);
+				document.getElementById('txt').innerHTML =
+				h + ":" + m + ":" + s;
+				var t = setTimeout(startTime, 500);
+				}
+				function checkTime(i) {
+				if (i < 10) {i = "0" + i}; // add zero in front of numbers < 10
+				return i;
+			}
+		</script>
+<!-- //Time-JavaScript -->
+<!-- //Custom-JavaScript-File-Links -->
+</body>
+<!-- //Body -->
+
+
+
+</html>

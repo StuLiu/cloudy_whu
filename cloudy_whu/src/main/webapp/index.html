@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<!-- Head -->
+<head>
+<title>Wuhan Weather</title>
+
+<!-- For-Mobile-Apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="New York Weather Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //For-Mobile-Apps -->
+
+<!-- Style --> <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+
+<!-- Web-Fonts -->
+<link href='//fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Raleway:100,200' rel='stylesheet' type='text/css'>
+<!-- //Web-Fonts -->
+
+</head>
+<!-- Head -->
+
+
+
+<!-- Body -->
+<body onload="startTime()">
+<!-- Heading -->
+<h1>GET AUTO WEATHER WIDGET</h1>
+<!-- //Headng -->
+<!-- Container -->
+<div class="container">
+  <!-- City -->
+  <div class="city">
+    <div class="title">
+      <h2>City</h2>
+      <select id="city" onchange="getFutureFiveDaysWeather();"></select>
+      <h3>&nbsp;</h3>
+    </div>
+    <div class="date-time">
+      <div class="dmy">
+        <div id="txt"></div>
+        <div class="date">
+          <!-- Date-JavaScript -->
+          <script type="text/javascript">
+							var mydate=new Date()
+							var year=mydate.getYear()
+							if(year<1000)
+							year+=1900
+							var day=mydate.getDay()
+							var month=mydate.getMonth()
+							var daym=mydate.getDate()
+							if(daym<10)
+							daym="0"+daym
+							var dayarray=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+							var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+							document.write(""+dayarray[day]+", "+montharray[month]+" "+daym+", "+year+"")
+							</script>
+          <!-- //Date-JavaScript -->
+        </div>
+      </div>
+      <div class="temperature">
+        <p><span id="today_tem"></span></p>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <!-- //City -->
+  <!-- Forecast -->
+  <div class="forecast">
+    <div class="forecast-icon"> <img src="images/forecast.png" alt="New York Weather Widget"> </div>
+    <div class="today-weather">
+      <h3>Cloudy</h3>
+      <ul>
+        <li id="day_0"><span class='date_li'></span>&nbsp;<span class='WEP_li'></span><span class='TEM_li'></span></li>
+        <li id="day_1"><span class='date_li'></span>&nbsp;<span class='WEP_li'></span><span class='TEM_li'></span></li>
+        <li id="day_2"><span class='date_li'></span>&nbsp;<span class='WEP_li'></span><span class='TEM_li'></span></li>
+        <li id="day_3"><span class='date_li'></span>&nbsp;<span class='WEP_li'></span><span class='TEM_li'></span></li>
+        <li id="day_4"><span class='date_li'></span>&nbsp;<span class='WEP_li'></span><span class='TEM_li'></span></li>
+      </ul>
+    </div>
+  </div>
+  <!-- //Forecast -->
+  <div class="clear"></div>
+</div>
+<!-- //Container -->
+<!-- Footer -->
+<div class="footer">
+  <!-- Copyright -->
+  <div class="copyright">
+    <a id="white" style="cursor:pointer">GET MORE WEATHER MESSAGE</a>
+    <!-- 
+    <a href="history\history.html" target="_blank"><h2 id="white">GET MORE WEATHER MESSAGE</h2></a>
+     -->
+    <p>&nbsp;</p>
+  </div>
+  <!-- //Copyright -->
+</div>
+<!-- //Footer -->
+<!-- Custom-JavaScript-Files -->
+<!-- Time-JavaScript -->
+<script>
+			function startTime() {
+				var today = new Date();
+				var h = today.getHours();
+				var m = today.getMinutes();
+				var s = today.getSeconds();
+				m = checkTime(m);
+				s = checkTime(s);
+				document.getElementById('txt').innerHTML =
+				h + ":" + m + ":" + s;
+				var t = setTimeout(startTime, 500);
+				}
+				function checkTime(i) {
+				if (i < 10) {i = "0" + i}; // add zero in front of numbers < 10
+				return i;
+			}
+		</script>
+<!-- //Time-JavaScript -->
+<!-- //Custom-JavaScript-File-Links -->
+</body>
+<!-- //Body -->
+
+<script src="js/jquery.min.js"></script>
+<script>
+	
+	init()
+	function init(){
+		setCitys();
+		getFutureFiveDaysWeather();
+	}
+	
+	
+	// 获取全部城市信息， 设置下拉框内容
+	function setCitys(){
+		$.ajax({
+	        type:"post",
+	        url:"weather/getCitys",
+	        dataType:"json",
+	        async:false,
+	        contentType : "application/json;charset=UTF-8",
+	        success:function(result){
+	        	console.log("result", result);
+	        	var city_list = result["data"];
+	        	console.log("getCitys", city_list);
+	        	
+	        	var select2=document.getElementById("city"); //获取第一个下拉列表对象
+				var ops=""; 
+			    for(var i=0;i<city_list.length;i++){
+			        ops=ops+"<option>"+city_list[i]+"</option>"
+			    }
+			    select2.innerHTML=ops;
+	        },
+	        error:function(error){
+	            console.log('error:', error);
+	        }
+	    })
+	}
+	
+	function getFutureFiveDaysWeather(){
+		var city_name = $("#city option:selected").val();
+		console.log(city_name);
+		$.ajax({
+	        type:"post",
+	        url:"weather/getFuture",
+	        dataType:"json",
+	        async:false,
+	        contentType : "application/json;charset=UTF-8",
+	        data:JSON.stringify({'city':city_name}),
+	        success:function(result){
+	        	console.log("getFuture", result);
+	        	var weathers = result["data"];
+	        	$(".date_li").css("float","left");
+	        	$(".WEP_li").css("float","left");
+	        	$(".TEM_li").css("float","right");
+	        	for(var i=0;i<weathers.length;++i){
+	        		var weather = weathers[i];
+					$("#day_"+i+" .date_li").text(split_address_time(weather["address_time"]));
+					$("#day_"+i+" .WEP_li").text(weather["WEP"]);
+					$("#day_"+i+" .TEM_li").text(weather["TEM_MIN"]+"~"+weather["TEM_MAX"]+"℃");
+				}
+				setTodaysWeather(weathers[0]);
+	        },
+	        error:function(error){
+	            console.log('getFuture:', error);
+	        }
+	    })
+	}
+	
+	function setTodaysWeather(weather){
+		$("#today_tem").text(weather["TEM_MIN"] + "~" + weather["TEM_MAX"]+"℃");
+		$(".forecast-icon img").attr("src","images/types/" + weather["WEP"] + ".png");
+	}
+	
+	function split_address_time(address_time){
+		var list = address_time.split('_');
+		return list[1]+"年"+list[2]+"月"+list[3]+"日";
+	}
+	
+	$("#white").click(function(){
+		console.log("clicked");
+		var city_name = $("#city option:selected").val();
+		console.log(city_name);
+		url = "history/history.html?city_name="+city_name; //此处拼接内容
+        window.location.href = url;
+        //location.replace(url);
+	});
+</script>
+
+</html>
+
+
+
+
+
+
+
+

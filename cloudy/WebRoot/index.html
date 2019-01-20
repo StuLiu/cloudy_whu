@@ -128,6 +128,7 @@ var ops="";
 <div class="footer">
   <!-- Copyright -->
   <div class="copyright">
+    <a href="history\history.html" target="_blank"><h2 id="white">GET MORE WEATHER MESSAGE</h2></a>
     <p>&nbsp;</p>
   </div>
   <!-- //Copyright -->
@@ -157,6 +158,34 @@ var ops="";
 </body>
 <!-- //Body -->
 
-
+<script src="js/jquery.min.js"></script>
+<script>
+	function getFuture(){
+		
+		$.ajax({
+	        type:"post",
+	        url:"weather/getFuture",
+	        dataType:"json",
+	        async:false,
+	        contentType : "application/json;charset=UTF-8",
+	        data:JSON.stringify({'city':'beijing'}),
+	        success:function(result){
+	        	console.log("getFuture", result);
+	        },
+	        error:function(error){
+	            console.log('getFuture:', error);
+	        }
+	    })
+	}
+	getFuture()
+</script>
 
 </html>
+
+
+
+
+
+
+
+

@@ -431,6 +431,15 @@ div#txt {
 		padding-bottom: 15px;
 	}
 }
-
+#white{
+	color:white;
+}
+.history {
+    margin-right: 8px;
+    overflow: hidden;
+    position: relative;
+    vertical-align: top;
+	rgba(53,104,123,0.8);
+}
 
 

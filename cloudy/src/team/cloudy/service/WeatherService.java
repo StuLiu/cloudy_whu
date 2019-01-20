@@ -1,6 +1,7 @@
 package team.cloudy.service;
 
-import java.util.Date;
+import java.io.IOException;
+import java.util.List;
 
 import team.cloudy.pojo.Weather;
 
@@ -11,8 +12,9 @@ public interface WeatherService {
 	 * @date 2018年10月26日 下午4:49:26  
 	 * @version 1.0   
 	 * @TODO 查询某地某时的天气状况
-	 * @param [地点，时间]
-	 * @return 天气对象
+	 * @param 
+	 * @return 天气对象的数组
+	 * @throws IOException 
 	 */
-	public abstract Weather getWeather(String address, Date time);
+	public abstract List<Weather> getWeather(String addressId, int days) throws IOException;
 }
